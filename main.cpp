@@ -14,8 +14,14 @@ int main()
     pc02.setRam(12);
 
     Laboratorio lab;
-    lab.agregarFinal(pc01);
-    lab.agregarFinal(pc02);
+    //lab.agregarFinal(pc01);
+    //lab.agregarFinal(pc02);
+    lab << pc01 << pc02;
+    
+    Computadora pc03;
+    cin >> pc03;
+    lab << pc03;
+
     lab.mostrar();
 
     return 0;

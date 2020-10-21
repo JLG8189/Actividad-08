@@ -2,6 +2,7 @@
 #define COMPUTADORA_H
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class Computadora
@@ -22,6 +23,33 @@ public:
     float getAlmac();
     void setRam(int v);
     int getRam();
+
+    friend ostream& operator<< (ostream &out, const Computadora &c)
+    {
+        out << left;
+        out << setw(10) << c.sistema;
+        out << setw(10) << c.nombre;
+        out << setw(17) << c.almac;
+        out << setw(6) << c.ram;
+        out << endl;
+        return out;
+    }
+
+    friend istream& operator>>(istream &in, Computadora &c)
+    {
+        cout << "Sistema: ";
+        getline(cin, c.sistema);
+
+        cout << "Nombre: ";
+        getline(cin, c.nombre);
+        
+        cout << "Almacenamiento: ";
+        cin >> c.almac;
+
+        cout << "Ram: ";
+        cin >> c.ram;
+        return in;
+    }
 };
 
 #endif
