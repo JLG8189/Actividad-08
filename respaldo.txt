@@ -1,0 +1,12 @@
+Windows
+PC 1
+500
+8
+Linux
+PC 2
+1000
+12
+MacOS
+PC 3
+500
+8

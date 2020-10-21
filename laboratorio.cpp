@@ -1,4 +1,5 @@
 #include "laboratorio.h"
+#include <fstream>
 
 Laboratorio::Laboratorio()
 {
@@ -38,4 +39,58 @@ void Laboratorio::mostrar()
         cout << "Memoria RAM: " << c.getRam() << endl << endl;
         */
     }
+}
+
+void Laboratorio::respaldar()
+{
+    ofstream archivo("respaldo.txt");
+    if (archivo.is_open())
+    {
+        for (size_t i = 0; i < cont; i++)
+        {
+            Computadora &c = arreglo[i];
+            archivo << c.getSistema() << endl;
+            archivo << c.getNombre() << endl;
+            archivo << c.getAlmac() << endl;
+            archivo << c.getRam() << endl;
+        }
+    }
+    archivo.close();
+}
+
+void Laboratorio::recuperar()
+{
+    ifstream archivo("respaldo.txt");
+    if(archivo.is_open())
+    {
+        string temp;
+        int almac;
+        int ram;
+        Computadora c;
+
+        while (true)
+        {
+            getline(archivo, temp); //Sistema
+            if(archivo.eof())
+            {
+                break;
+            }
+            c.setSistema(temp);
+
+            getline(archivo, temp); //Nombre
+            c.setNombre(temp);
+
+            getline(archivo, temp); //Almacenamiento
+            almac = stoi(temp); //String-to-int
+            c.setAlmac(almac);
+
+            getline(archivo, temp); //Ram
+            ram = stoi(temp);
+            c.setRam(ram);
+
+            agregarFinal(c);
+        }
+        
+    }
+    archivo.close();
 }

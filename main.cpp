@@ -5,7 +5,10 @@ using namespace std;
 
 int main()
 {
-    Computadora pc01 = Computadora("Windows", "PC 1", 500, 8);
+    Laboratorio lab;
+    lab.recuperar();
+    lab.mostrar();
+    /*Computadora pc01 = Computadora("Windows", "PC 1", 500, 8);
 
     Computadora pc02;
     pc02.setSistema("Linux");
@@ -23,6 +26,7 @@ int main()
     lab << pc03;
 
     lab.mostrar();
+    lab.respaldar();*/
 
     return 0;
 }
